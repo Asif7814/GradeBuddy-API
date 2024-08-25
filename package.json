@@ -1,0 +1,23 @@
+{
+    "name": "GradeBuddy",
+    "version": "1.0.0",
+    "description": "GradeBuddy is a comprehensive academic tool that helps students track their grades, manage courses, and calculate their GPA. With features like assignment tracking, goal setting, and performance analytics, GradeBuddy makes it easy to stay on top of your academic journey, all in a user-friendly and intuitive interface.",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon src/index.js",
+        "start": "node src/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Asif Ashadullah",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "express-mongo-sanitize": "^2.2.0",
+        "mongoose": "^8.5.1",
+        "xss": "^1.0.15"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.3"
+    }
+}
