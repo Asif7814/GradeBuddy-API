@@ -3,6 +3,11 @@ const { BadRequestError } = require("../utils/errors");
 
 const createDeliverable = async (newDeliverable) => {
     const createdDeliverable = await deliverable.create(newDeliverable);
+
+    if (!createdDeliverable) {
+        throw new BadRequestError("Deliverable could not be created");
+    }
+
     return createdDeliverable;
 };
 
@@ -14,17 +19,25 @@ const getDeliverableByID = async (id) => {
 };
 
 const replaceDeliverable = async (id, updatedDeliverable) => {
-    const newDeliverable = await deliverable.findByIdAndUpdate(id, updatedDeliverable, {
-        new: true,
-    });
+    const newDeliverable = await deliverable.findByIdAndUpdate(
+        id,
+        updatedDeliverable,
+        {
+            new: true,
+        }
+    );
 
     return newDeliverable;
 };
 
 const updateDeliverable = async (id, updatedValue) => {
-    const newDeliverable = await deliverable.findByIdAndUpdate(id, updatedValue, {
-        new: true,
-    });
+    const newDeliverable = await deliverable.findByIdAndUpdate(
+        id,
+        updatedValue,
+        {
+            new: true,
+        }
+    );
 
     return newDeliverable;
 };

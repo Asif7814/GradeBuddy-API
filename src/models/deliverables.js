@@ -1,14 +1,19 @@
-const { model, Schema } = require("mongoose");
+const { model, Schema, Types } = require("mongoose");
 
 const deliverableSchema = new Schema(
     {
+        user: {
+            type: Types.ObjectId,
+            ref: "User",
+            required: true,
+        },
         name: {
             type: String,
             required: true,
         },
         description: {
             type: String,
-            required: true,
+            required: false,
         },
         type: {
             type: String,
@@ -60,4 +65,4 @@ const deliverableSchema = new Schema(
     }
 );
 
-module.exports = model("deliverable", deliverableSchema);
+module.exports = model("Deliverable", deliverableSchema);

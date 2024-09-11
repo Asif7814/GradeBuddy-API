@@ -3,6 +3,11 @@ const { BadRequestError } = require("../utils/errors");
 
 const createSemester = async (newSemester) => {
     const createdSemester = await semester.create(newSemester);
+
+    if (!createdSemester) {
+        throw new BadRequestError("Semester could not be created");
+    }
+
     return createdSemester;
 };
 

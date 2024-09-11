@@ -2,7 +2,13 @@ const courseService = require("../services/courses");
 
 const createCourse = async (req, res, next) => {
     try {
-        const newCourse = await courseService.createCourse(req.body);
+        const newCourse = await courseService.createCourse(
+            {
+                ...req.body,
+                user: req.user._id,
+            },
+            req.params.semesterID
+        );
 
         res.status(201).json({
             data: newCourse,
@@ -65,8 +71,8 @@ const updateCourse = async (req, res, next) => {
 
 const deleteCourse = async (req, res, next) => {
     try {
-        const { id } = req.params;
-        const deletedCourse = await courseService.deleteCourse(id);
+        const { id, semesterID } = req.params;
+        const deletedCourse = await courseService.deleteCourse(id, semesterID);
 
         res.status(200).json({
             data: deletedCourse,

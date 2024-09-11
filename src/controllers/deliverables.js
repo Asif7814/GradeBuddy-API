@@ -2,7 +2,10 @@ const deliverableService = require("../services/deliverables");
 
 const createDeliverable = async (req, res, next) => {
     try {
-        const newDeliverable = await deliverableService.createDeliverable(req.body);
+        const newDeliverable = await deliverableService.createDeliverable({
+            ...req.body,
+            user: req.user._id,
+        });
 
         res.status(201).json({
             data: newDeliverable,
@@ -40,7 +43,10 @@ const getDeliverableByID = async (req, res, next) => {
 const replaceDeliverable = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const replacedDeliverable = await deliverableService.replaceDeliverable(id, req.body);
+        const replacedDeliverable = await deliverableService.replaceDeliverable(
+            id,
+            req.body
+        );
 
         res.status(200).json({
             data: replacedDeliverable,
@@ -53,7 +59,10 @@ const replaceDeliverable = async (req, res, next) => {
 const updateDeliverable = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const updatedDeliverable = await deliverableService.updateDeliverable(id, req.body);
+        const updatedDeliverable = await deliverableService.updateDeliverable(
+            id,
+            req.body
+        );
 
         res.status(200).json({
             data: updatedDeliverable,
@@ -66,7 +75,9 @@ const updateDeliverable = async (req, res, next) => {
 const deleteDeliverable = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const deletedDeliverable = await deliverableService.deleteDeliverable(id);
+        const deletedDeliverable = await deliverableService.deleteDeliverable(
+            id
+        );
 
         res.status(200).json({
             data: deletedDeliverable,

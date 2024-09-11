@@ -26,7 +26,7 @@ GradeBuddy is a comprehensive academic tool that helps students track their grad
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/gradebuddy.git
+    git clone https://github.com/Asif7814/gradebuddy.git
     ```
 
 2. **Navigate to the project directory:**
@@ -56,7 +56,7 @@ GradeBuddy is a comprehensive academic tool that helps students track their grad
 5. **Run the application:**
 
     ```bash
-    git clone https://github.com/yourusername/gradebuddy.git
+    npm run start OR npm run dev
     ```
 
 ## API Endpoints

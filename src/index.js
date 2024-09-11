@@ -6,6 +6,7 @@ require("./utils/db");
 
 const sanitizeBody = require("./middlewares/sanitizeBody");
 
+const authRouter = require("./routers/auth");
 const semesterRouter = require("./routers/semesters");
 const courseRouter = require("./routers/courses");
 const deliverableRouter = require("./routers/deliverables");
@@ -25,6 +26,7 @@ app.get("/", (_req, res) => {
 });
 
 // ROUTES
+app.use("/auth", authRouter);
 app.use("/api/semesters", semesterRouter);
 app.use("/api/courses", courseRouter);
 app.use("/api/deliverables", deliverableRouter);

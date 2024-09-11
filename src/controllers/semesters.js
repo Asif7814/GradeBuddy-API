@@ -2,7 +2,10 @@ const semesterService = require("../services/semesters");
 
 const createSemester = async (req, res, next) => {
     try {
-        const newSemester = await semesterService.createSemester(req.body);
+        const newSemester = await semesterService.createSemester({
+            ...req.body,
+            user: req.user._id,
+        });
 
         res.status(201).json({
             data: newSemester,
@@ -40,7 +43,10 @@ const getSemesterByID = async (req, res, next) => {
 const replaceSemester = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const replacedSemester = await semesterService.replaceSemester(id, req.body);
+        const replacedSemester = await semesterService.replaceSemester(
+            id,
+            req.body
+        );
 
         res.status(200).json({
             data: replacedSemester,
@@ -53,7 +59,10 @@ const replaceSemester = async (req, res, next) => {
 const updateSemester = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const updatedSemester = await semesterService.updateSemester(id, req.body);
+        const updatedSemester = await semesterService.updateSemester(
+            id,
+            req.body
+        );
 
         res.status(200).json({
             data: updatedSemester,

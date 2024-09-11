@@ -2,6 +2,11 @@ const { model, Schema, Types } = require("mongoose");
 
 const semesterSchema = new Schema(
     {
+        user: {
+            type: Types.ObjectId,
+            ref: "User",
+            required: true,
+        },
         name: {
             type: String,
             required: true,
@@ -13,7 +18,7 @@ const semesterSchema = new Schema(
         courses: [
             {
                 type: Types.ObjectId,
-                ref: "course",
+                ref: "Course",
             },
         ],
         GPA: {
@@ -31,4 +36,4 @@ const semesterSchema = new Schema(
     }
 );
 
-module.exports = model("semester", semesterSchema);
+module.exports = model("Semester", semesterSchema);
