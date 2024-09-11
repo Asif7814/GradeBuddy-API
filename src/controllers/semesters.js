@@ -1,5 +1,8 @@
 const semesterService = require("../services/semesters");
 
+// @desc    Create a new semester
+// @route   POST /api/semesters
+// @access  Private
 const createSemester = async (req, res, next) => {
     try {
         const newSemester = await semesterService.createSemester({
@@ -15,6 +18,9 @@ const createSemester = async (req, res, next) => {
     }
 };
 
+// @desc    Get all semesters
+// @route   GET /api/semesters
+// @access  Private
 const getAllSemesters = async (_req, res, next) => {
     try {
         const semesters = await semesterService.getAllSemesters();
@@ -27,6 +33,9 @@ const getAllSemesters = async (_req, res, next) => {
     }
 };
 
+// @desc    Get a semester by ID
+// @route   GET /api/semesters/:id
+// @access  Private
 const getSemesterByID = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -40,6 +49,9 @@ const getSemesterByID = async (req, res, next) => {
     }
 };
 
+// @desc    Replace a semester's details
+// @route   PUT /api/semesters/:id
+// @access  Private
 const replaceSemester = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -56,6 +68,9 @@ const replaceSemester = async (req, res, next) => {
     }
 };
 
+// @desc    Update a semester's details
+// @route   PATCH /api/semesters/:id
+// @access  Private
 const updateSemester = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -72,6 +87,9 @@ const updateSemester = async (req, res, next) => {
     }
 };
 
+// @desc    Delete a semester
+// @route   DELETE /api/semesters
+// @access  Private
 const deleteSemester = async (req, res, next) => {
     try {
         const { id } = req.params;

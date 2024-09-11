@@ -1,5 +1,8 @@
 const courseService = require("../services/courses");
 
+// @desc    Create a course and add it to a semester
+// @route   POST /api/semesters/:semesterID/courses
+// @access  Private
 const createCourse = async (req, res, next) => {
     try {
         const newCourse = await courseService.createCourse(
@@ -18,6 +21,9 @@ const createCourse = async (req, res, next) => {
     }
 };
 
+// @desc    Get all courses
+// @route   GET /api/courses
+// @access  Private
 const getAllCourses = async (_req, res, next) => {
     try {
         const courses = await courseService.getAllCourses();
@@ -30,6 +36,9 @@ const getAllCourses = async (_req, res, next) => {
     }
 };
 
+// @desc    Get a course by ID
+// @route   GET /api/courses/:id
+// @access  Private
 const getCourseByID = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -43,6 +52,9 @@ const getCourseByID = async (req, res, next) => {
     }
 };
 
+// @desc    Replace a course's details
+// @route   PUT /api/courses/:id
+// @access  Private
 const replaceCourse = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -56,6 +68,9 @@ const replaceCourse = async (req, res, next) => {
     }
 };
 
+// @desc    Update a course's details
+// @route   PATCH /api/courses/:id
+// @access  Private
 const updateCourse = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -69,6 +84,9 @@ const updateCourse = async (req, res, next) => {
     }
 };
 
+// @desc    Delete a course and remove it from a semester
+// @route   DELETE /api/semesters/:semesterID/courses/:id
+// @access  Private
 const deleteCourse = async (req, res, next) => {
     try {
         const { id, semesterID } = req.params;

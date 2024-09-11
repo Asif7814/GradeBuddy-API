@@ -20,7 +20,7 @@ semesterRouter.post(
     courseController.createCourse
 );
 
-// D - Delete a course for a semester
+// D - Delete a course from a semester
 semesterRouter.delete(
     "/:semesterID/courses/:id",
     protect,

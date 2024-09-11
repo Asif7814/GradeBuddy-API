@@ -6,12 +6,13 @@ const { BadRequestError } = require("../utils/errors");
 const createCourse = async (newCourse, semesterID) => {
     const createdCourse = await course.create(newCourse);
 
-    console.log(createdCourse);
+    console.log("CREATED COURSE:", createdCourse); // second time running the test (creating a new course in Postman), this is not being logged nor added to the db
+
     if (!createdCourse) {
         throw new BadRequestError("Course could not be created");
     }
 
-    addCourseToSemester(semesterID, createdCourse._id);
+    await addCourseToSemester(semesterID, createdCourse._id);
 
     return createdCourse;
 };
@@ -54,7 +55,7 @@ const updateCourse = async (id, updatedValue) => {
 };
 
 const deleteCourse = async (courseID, semesterID) => {
-    deleteCourseFromSemester(semesterID, courseID);
+    await deleteCourseFromSemester(semesterID, courseID);
 
     const deletedCourse = await course.findByIdAndDelete(courseID);
 

@@ -1,11 +1,17 @@
 const deliverableService = require("../services/deliverables");
 
+// @desc    Create a deliverable and add it to a course
+// @route   POST /api/courses/:courseID/deliverables
+// @access  Private
 const createDeliverable = async (req, res, next) => {
     try {
-        const newDeliverable = await deliverableService.createDeliverable({
-            ...req.body,
-            user: req.user._id,
-        });
+        const newDeliverable = await deliverableService.createDeliverable(
+            {
+                ...req.body,
+                user: req.user._id,
+            },
+            req.params.courseID
+        );
 
         res.status(201).json({
             data: newDeliverable,
@@ -15,6 +21,9 @@ const createDeliverable = async (req, res, next) => {
     }
 };
 
+// @desc    Get all deliverables
+// @route   GET /api/deliverables
+// @access  Private
 const getAllDeliverables = async (_req, res, next) => {
     try {
         const deliverables = await deliverableService.getAllDeliverables();
@@ -27,6 +36,9 @@ const getAllDeliverables = async (_req, res, next) => {
     }
 };
 
+// @desc    Get a deliverable by ID
+// @route   GET /api/deliverables/:id
+// @access  Private
 const getDeliverableByID = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -40,6 +52,9 @@ const getDeliverableByID = async (req, res, next) => {
     }
 };
 
+// @desc    Replace a deliverable's details
+// @route   PUT /api/deliverables/:id
+// @access  Private
 const replaceDeliverable = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -56,6 +71,9 @@ const replaceDeliverable = async (req, res, next) => {
     }
 };
 
+// @desc    Update a deliverable's details
+// @route   PATCH /api/deliverables/:id
+// @access  Private
 const updateDeliverable = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -72,11 +90,15 @@ const updateDeliverable = async (req, res, next) => {
     }
 };
 
+// @desc    Delete a deliverable and remove it from a course
+// @route   DELETE /api/courses/:courseID/deliverables/:id
+// @access  Private
 const deleteDeliverable = async (req, res, next) => {
     try {
-        const { id } = req.params;
+        const { id, courseID } = req.params;
         const deletedDeliverable = await deliverableService.deleteDeliverable(
-            id
+            id,
+            courseID
         );
 
         res.status(200).json({

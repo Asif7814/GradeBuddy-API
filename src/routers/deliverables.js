@@ -7,7 +7,7 @@ const deliverableRouter = Router();
 const { protect } = require("../middlewares/auth");
 
 // C - Create
-deliverableRouter.post("/", protect, deliverableController.createDeliverable);
+// deliverableRouter.post("/", protect, deliverableController.createDeliverable);
 
 // R - Read all
 deliverableRouter.get("/", protect, deliverableController.getAllDeliverables);
@@ -34,10 +34,10 @@ deliverableRouter.patch(
 );
 
 // D - Delete
-deliverableRouter.delete(
-    "/:id",
-    protect,
-    deliverableController.deleteDeliverable
-);
+// deliverableRouter.delete(
+//     "/:id",
+//     protect,
+//     deliverableController.deleteDeliverable
+// );
 
 module.exports = deliverableRouter;
